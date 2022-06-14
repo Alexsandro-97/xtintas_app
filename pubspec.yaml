@@ -1,4 +1,4 @@
-name: xtintas_loomi_app
+name: xtintas_app
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -29,15 +29,24 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  device_preview: ^1.1.0
+  dio: ^4.0.6
+  shared_preferences: ^2.0.15
+  flutter_svg: ^1.1.0
+  flutter_mobx: ^2.0.6+1
+  mobx: ^2.0.7+3
+  mobx_codegen: ^2.0.7
+  lottie: ^1.3.0 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: ^2.1.11
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -45,6 +54,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -58,8 +68,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
