@@ -17,6 +17,7 @@ class DiferencialsList extends StatelessWidget {
       child: Row(
         children: [
           Icon(icon),
+          const SizedBox(width: 5.0),
           Text(title),
         ],
       ),
