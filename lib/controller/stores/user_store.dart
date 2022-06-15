@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:xtintas_app/repositories/errors/errors.dart';
 import 'package:xtintas_app/repositories/services/sign_in_user_service.dart';
 import 'package:xtintas_app/repositories/services/sign_out_service.dart';
+import 'package:xtintas_app/repositories/services/sign_up_user_service.dart';
 
 import '/models/user_model.dart';
 import '../../repositories/client/dio_client.dart';
@@ -16,11 +18,36 @@ class UserStore = _UserStoreBase with _$UserStore;
 abstract class _UserStoreBase with Store {
   final IClient client = DioClient();
   late GetProfileService userService = GetProfileService(client);
+  late SignUpService signUpService = SignUpService(client);
   late SignInService signInService = SignInService(client);
   late SignOutService signOutService = SignOutService(client);
 
   @observable
   User? profile;
+
+  @observable
+  String newName = '';
+
+  @observable
+  String newEmail = '';
+
+  @observable
+  String newPassword = '';
+
+  @action
+  setName(String name) {
+    newName = name;
+  }
+
+  @action
+  setEmail(String email) {
+    newEmail = email;
+  }
+
+  @action
+  setPassword(String password) {
+    newPassword = password;
+  }
 
   @action
   getProfile() async {
@@ -33,6 +60,23 @@ abstract class _UserStoreBase with Store {
       );
     } catch (e) {
       debugPrint("Error: $e");
+    }
+  }
+
+  @action
+  signUp() async {
+    final User user = User(
+      name: newName,
+      email: newEmail,
+      password: newPassword,
+    );
+    try {
+      final responseJson = await signUpService.signUpUser(user.toJson());
+      return true;
+    } on ExceptionUserAlreadyExists {
+      return false;
+    } catch (e) {
+      print(e);
     }
   }
 
