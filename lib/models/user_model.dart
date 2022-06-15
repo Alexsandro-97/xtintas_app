@@ -1,7 +1,7 @@
 class User {
   String? id;
-  final String name;
-  final String email;
+  String? name;
+  String? email;
   String? password;
   String? avatar;
 
@@ -9,23 +9,23 @@ class User {
     this.id,
     this.password,
     this.avatar,
-    required this.name,
-    required this.email,
+    this.name,
+    this.email,
   });
 
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'email': email,
-        'avatar': avatar,
-        'password': password,
-        'id': id,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['email'] = email;
+    data['password'] = password;
+    data['id'] = id;
+    return data;
+  }
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
-        id: json['id'],
-        name: json['name'],
-        email: json['email'],
-        password: json['password'],
-        avatar: json['avatar'],
-      );
+  User.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    email = json['email'];
+    password = json['password'];
+    id = json['id'];
+  }
 }
