@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '/utils/colors/app_colors.dart';
 import '/view/screens/cart_screen.dart';
 import '/view/screens/profile_screen.dart';
@@ -23,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final sizeScreen = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: const Color(0xFFF2F2F2),
       body: PageView(
@@ -52,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 blurRadius: 10,
               ),
             ]),
-        height: 80,
+        height: sizeScreen.height * 0.1,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
