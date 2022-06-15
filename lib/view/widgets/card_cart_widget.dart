@@ -7,17 +7,19 @@ class CardCart extends StatelessWidget {
     required this.title,
     required this.unit,
     required this.price,
+    required this.src,
   }) : super(key: key);
 
   final Size sizeScreen;
   final String title;
   final int unit;
   final int price;
+  final String src;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.all(10),
       height: sizeScreen.height * 0.15,
       width: sizeScreen.width,
       decoration: BoxDecoration(
@@ -30,12 +32,12 @@ class CardCart extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Container(
-            color: Colors.red,
+          SizedBox(
             height: sizeScreen.height * 0.13,
             width: 60,
+            child: Image.network(src),
           ),
-          const SizedBox(width: 20),
+          const SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -46,7 +48,7 @@ class CardCart extends StatelessWidget {
                 height: 1.5,
                 width: sizeScreen.width * 0.55,
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 25),
               Row(
                 children: [
                   Row(
@@ -65,7 +67,7 @@ class CardCart extends StatelessWidget {
                       )
                     ],
                   ),
-                  SizedBox(width: sizeScreen.width * 0.15),
+                  SizedBox(width: sizeScreen.width * 0.20),
                   Text('R\$ $price,00'),
                 ],
               ),
