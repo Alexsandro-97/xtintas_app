@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:lottie/lottie.dart';
 import 'package:xtintas_app/view/widgets/rounded_button_widget.dart';
-import '/utils/colors/app_colors.dart';
 
+import '/utils/colors/app_colors.dart';
 import '../../controller/stores/paint_store.dart';
 import '../widgets/diferencials_widget.dart';
 
@@ -250,7 +251,9 @@ class _StoreScreenState extends State<StoreScreen> {
                   ),
                 ],
               )
-            : const Center(child: CircularProgressIndicator());
+            : Center(
+                child: Lottie.network(
+                    'https://assets7.lottiefiles.com/packages/lf20_sjcbakkb.json'));
       }),
     );
   }
