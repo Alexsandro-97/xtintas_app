@@ -127,8 +127,8 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         onTapButton: () async {
                           if (_key.currentState!.validate()) {
-                            final hasLogin = await userStore.signIn();
-                            if (hasLogin) {
+                            final hasSignIn = await userStore.signIn();
+                            if (hasSignIn) {
                               Navigator.of(context).pushNamedAndRemoveUntil(
                                   '/homeScreen', (route) => false);
                             } else {
