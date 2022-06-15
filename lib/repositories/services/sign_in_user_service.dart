@@ -9,9 +9,9 @@ class SignInService {
 
   SignInService(this.client);
 
-  Future<bool> signInUser() async {
+  Future<String?> signInUser() async {
     try {
-      final Response response = await client.get(UrlsAndRoutes.loginRoute);
+      final Response response = await client.get(UrlsAndRoutes.signInRoute);
       final accessToken = response.data['access-token'];
       return accessToken;
     } on DioError catch (e) {
