@@ -45,4 +45,11 @@ abstract class _UserStoreBase with Store {
       return false;
     }
   }
+
+  @action
+  logout() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.clear();
+    return true;
+  }
 }
