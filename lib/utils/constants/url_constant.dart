@@ -5,4 +5,5 @@ abstract class UrlsAndRoutes {
   static String signOutRoute = '/logout';
   static String paintsRoute = '/paints';
   static String profileRoute = '/profile';
+  static String cartRoute = '/cart';
 }
