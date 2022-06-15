@@ -18,19 +18,17 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
   UserStore userStore = UserStore();
   final _key = GlobalKey<FormState>();
 
+  bool isObscure = true;
+
   @override
   void dispose() {
-    _controllerEmail.dispose();
     _controllerPassword.dispose();
     super.dispose();
   }
-
-  bool isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +80,6 @@ class _SignInScreenState extends State<SignInScreen> {
                         decoration: InputDecorationCustom.customDecoration(
                           placeHolder: 'Type your email!',
                         ),
-                        controller: _controllerEmail,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.emailAddress,
                         validator: Validators.emailValidator,
@@ -94,8 +91,6 @@ class _SignInScreenState extends State<SignInScreen> {
                         decoration: InputDecorationCustom.customDecoration(
                           placeHolder: 'Type your password!',
                         ).copyWith(
-                          helperText: 'Mínimo de 8 caracteres!',
-                          helperStyle: const TextStyle(color: Colors.white),
                           suffixIcon: IconButton(
                             onPressed: () {
                               setState(() {
