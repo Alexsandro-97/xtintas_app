@@ -77,6 +77,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       const SizedBox(height: 20),
                       const LabelInput('Email'),
                       TextFormField(
+                        style: const TextStyle(color: Colors.white),
                         decoration: InputDecorationCustom.customDecoration(
                           placeHolder: 'Type your email!',
                         ),
@@ -88,6 +89,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       const LabelInput('Senha'),
                       TextFormField(
+                        style: const TextStyle(color: Colors.white),
                         decoration: InputDecorationCustom.customDecoration(
                           placeHolder: 'Type your password!',
                         ).copyWith(
