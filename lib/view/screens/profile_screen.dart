@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+
 import '/controller/stores/user_store.dart';
+import '../widgets/logout_button_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -77,49 +79,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    LogoutButton(sizeScreen: sizeScreen),
+                    LogoutButton(
+                      sizeScreen: sizeScreen,
+                      onTapButton: () async {
+                        final hasLogout = await userStore.logout();
+                        print('Fez logout: $hasLogout');
+                        if (hasLogout) {
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              '/signInScreen', (route) => false);
+                        }
+                      },
+                    ),
                   ],
                 ),
               )
             : const Center(child: CircularProgressIndicator());
       }),
-    );
-  }
-}
-
-class LogoutButton extends StatelessWidget {
-  const LogoutButton({
-    Key? key,
-    required this.sizeScreen,
-  }) : super(key: key);
-
-  final Size sizeScreen;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        height: sizeScreen.height * 0.08,
-        width: sizeScreen.width,
-        decoration: BoxDecoration(
-          color: const Color(0xFFEAEAEA).withOpacity(0.28),
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            width: 1,
-            color: const Color(0xFF404040).withOpacity(0.28),
-          ),
-        ),
-        child: const Center(
-            child: Text(
-          'Fazer logout',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-            color: Color(0xFF5B4DA7),
-          ),
-        )),
-      ),
     );
   }
 }
