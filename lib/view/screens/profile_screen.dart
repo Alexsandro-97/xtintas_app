@@ -70,7 +70,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             const SizedBox(width: 20),
                             Text(
-                              userStore.profile!.name,
+                              userStore.profile!.name!,
                               style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
