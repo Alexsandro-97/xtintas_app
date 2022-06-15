@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+
 import '/view/screens/auth_screen.dart';
 import '/view/screens/sign_in_screen.dart';
 import '/view/screens/sign_up_screen.dart';
-
 import 'view/screens/auth_screen.dart';
 import 'view/screens/home_screen.dart';
 import 'view/screens/sign_in_screen.dart';
@@ -50,6 +50,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primaryColor: Colors.blue,
+          fontFamily: 'Open Sans',
         ),
         initialRoute: '/authScreen',
         routes: {
