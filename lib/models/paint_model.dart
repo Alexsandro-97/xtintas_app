@@ -4,12 +4,7 @@ class Paint {
   int? price;
   List<Benefits>? benefits;
 
-  Paint({
-    this.name,
-    this.image,
-    this.price,
-    this.benefits,
-  });
+  Paint({this.name, this.image, this.price, this.benefits});
 
   Paint.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -22,19 +17,34 @@ class Paint {
       });
     }
   }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['image'] = image;
+    data['price'] = price;
+    if (benefits != null) {
+      data['benefits'] = benefits!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
 }
 
 class Benefits {
   String? name;
   String? icon;
 
-  Benefits({
-    this.name,
-    this.icon,
-  });
+  Benefits({this.name, this.icon});
 
   Benefits.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     icon = json['icon'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['icon'] = icon;
+    return data;
   }
 }
