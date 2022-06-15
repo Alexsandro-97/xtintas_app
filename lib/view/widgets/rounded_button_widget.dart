@@ -14,7 +14,7 @@ class RoundedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onTapButton,
       child: Container(
         decoration: BoxDecoration(
