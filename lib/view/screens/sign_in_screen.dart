@@ -131,10 +131,8 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                         ),
                         onTapButton: () async {
-                          final formState = Form.of(context);
-                          if (formState != null && formState.validate()) {
-                            bool hasLogin = userStore.signIn();
-                            print(hasLogin);
+                          if (_key.currentState!.validate()) {
+                            final hasLogin = await userStore.signIn();
                             if (hasLogin) {
                               Navigator.of(context).pushNamedAndRemoveUntil(
                                   '/homeScreen', (route) => false);
@@ -146,6 +144,14 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                               );
                             }
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Preencha todos os campos acima!',
+                                ),
+                              ),
+                            );
                           }
                         },
                       ),
