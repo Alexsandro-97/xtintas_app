@@ -6,6 +6,19 @@ class Validators {
     return null;
   }
 
+  static String? nameValidator(String? text) {
+    final emptyError = emptyValidator(text);
+    if (emptyError == null && text != null) {
+      if (text.length < 3) {
+        return 'Nome muito curto';
+      }
+      if (text.length > 20) {
+        return 'Nome muito longo';
+      }
+    }
+    return emptyError;
+  }
+
   static String? emailValidator(String? text) {
     final emailRegex = RegExp(
       r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",
