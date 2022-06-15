@@ -13,7 +13,7 @@ class LabelInput extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
         child: Text(
           label,
           style: const TextStyle(color: Colors.white),
