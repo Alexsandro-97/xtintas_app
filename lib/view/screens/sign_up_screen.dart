@@ -86,6 +86,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         const SizedBox(height: 15),
                         const LabelInput('Nome'),
                         TextFormField(
+                          style: const TextStyle(color: Colors.white),
                           decoration: InputDecorationCustom.customDecoration(
                             placeHolder: 'Type your name!',
                           ),
@@ -101,6 +102,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         const LabelInput('Email'),
                         TextFormField(
+                          style: const TextStyle(color: Colors.white),
                           decoration: InputDecorationCustom.customDecoration(
                             placeHolder: 'Type your email!',
                           ),
@@ -113,6 +115,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         const LabelInput('Senha'),
                         TextFormField(
+                          style: const TextStyle(color: Colors.white),
                           decoration: InputDecorationCustom.customDecoration(
                             placeHolder: 'Type your password!',
                           ).copyWith(
@@ -150,6 +153,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         const LabelInput('Confirmar senha'),
                         TextFormField(
+                          style: const TextStyle(color: Colors.white),
                           decoration: InputDecorationCustom.customDecoration(
                             placeHolder: 'Confirm your password!',
                           ).copyWith(
@@ -213,6 +217,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         Text('Usuário cadastrado com sucesso!'),
                                   ),
                                 );
+                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                    '/signInScreen', (route) => false);
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
@@ -220,6 +226,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   ),
                                 );
                               }
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'Preencha todos os campos acima!',
+                                  ),
+                                ),
+                              );
                             }
                           },
                           backgroundColor: Colors.white,
