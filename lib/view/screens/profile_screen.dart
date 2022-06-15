@@ -23,6 +23,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final sizeScreen = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -46,8 +47,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   children: [
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.15,
-                      width: MediaQuery.of(context).size.width,
+                      height: sizeScreen.height * 0.15,
+                      width: sizeScreen.width,
                       decoration: BoxDecoration(
                         color: const Color(0xFFEAEAEA).withOpacity(0.28),
                         borderRadius: BorderRadius.circular(8),
