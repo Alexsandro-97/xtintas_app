@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:lottie/lottie.dart';
 
 import '/controller/stores/user_store.dart';
 import '../widgets/logout_button_widget.dart';
@@ -82,8 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     LogoutButton(
                       sizeScreen: sizeScreen,
                       onTapButton: () async {
-                        final hasLogout = await userStore.logout();
-                        print('Fez logout: $hasLogout');
+                        final hasLogout = await userStore.signOut();
                         if (hasLogout) {
                           Navigator.of(context).pushNamedAndRemoveUntil(
                               '/signInScreen', (route) => false);
@@ -93,7 +93,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
               )
-            : const Center(child: CircularProgressIndicator());
+            : Center(
+                child: Lottie.network(
+                    'https://assets7.lottiefiles.com/packages/lf20_sjcbakkb.json'));
       }),
     );
   }
