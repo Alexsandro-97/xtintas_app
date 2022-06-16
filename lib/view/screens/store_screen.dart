@@ -83,6 +83,7 @@ class _StoreScreenState extends State<StoreScreen> {
                                 Align(
                                   alignment: Alignment.topRight,
                                   child: Container(
+                                    padding: const EdgeInsets.all(5),
                                     width: sizeScreen.width * 0.2,
                                     height: sizeScreen.height * 0.05,
                                     decoration: BoxDecoration(
@@ -239,7 +240,7 @@ class _StoreScreenState extends State<StoreScreen> {
                         backgroundColor: AppColors.backgroundSignInColor,
                         onTapButton: () {},
                         child: const Text(
-                          'Adicionar carrinho',
+                          'Adicionar ao carrinho',
                           style: TextStyle(
                             color: Color(0xFFFFFFFF),
                             fontSize: 20.0,
