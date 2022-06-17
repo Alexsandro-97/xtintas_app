@@ -17,6 +17,8 @@ abstract class _CartStoreBase with Store {
   @observable
   List<Cart> carts = [];
 
+  int unit = 1;
+
   @action
   getCarts() async {
     try {
