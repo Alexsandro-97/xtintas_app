@@ -32,12 +32,19 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final sizeScreen = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.backgroundSignInColor,
       body: Stack(
         children: [
-          Container(),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Container(
+              color: Colors.white.withOpacity(0.5),
+              width: sizeScreen.width * 0.3,
+              height: sizeScreen.height * 0.2,
+            ),
+          ),
           Form(
             key: _key,
             child: GestureDetector(
@@ -45,8 +52,8 @@ class _SignInScreenState extends State<SignInScreen> {
               child: SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: size.width * 0.07,
-                    vertical: size.height * 0.15,
+                    horizontal: sizeScreen.width * 0.07,
+                    vertical: sizeScreen.height * 0.15,
                   ),
                   child: Column(
                     children: [
@@ -64,7 +71,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                         ],
                       ),
-                      SizedBox(height: size.height * 0.1),
+                      SizedBox(height: sizeScreen.height * 0.1),
                       const Text(
                         'Entrar na plataforma',
                         style: TextStyle(
