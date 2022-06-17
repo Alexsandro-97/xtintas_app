@@ -18,6 +18,7 @@ class _StoreScreenState extends State<StoreScreen> {
   PaintStore paintStore = PaintStore();
 
   final PageController controller = PageController(
+    initialPage: 1,
     viewportFraction: 0.9,
   );
 
@@ -63,6 +64,7 @@ class _StoreScreenState extends State<StoreScreen> {
                         onPageChanged: (index) {
                           setState(() {
                             indexReference = index;
+                            print("IndexReference: $indexReference");
                           });
                         },
                         controller: controller,
@@ -192,53 +194,57 @@ class _StoreScreenState extends State<StoreScreen> {
                     ),
                   ),
                   Expanded(
-                      flex: 2,
-                      child: Card(
-                        margin: const EdgeInsets.only(
-                          left: 30.0,
-                          right: 30.0,
-                          top: 5,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              const Expanded(
-                                child: Text(
-                                  'Diferenciais',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                    flex: 2,
+                    child: Card(
+                      margin: const EdgeInsets.only(
+                        left: 30.0,
+                        right: 30.0,
+                        top: 5,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            const Expanded(
+                              child: Text(
+                                'Diferenciais',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: ListView.separated(
+                                physics: const NeverScrollableScrollPhysics(),
+                                separatorBuilder: (context, index) =>
+                                    const SizedBox(height: 20),
+                                itemCount: paintStore
+                                    .paints[indexReference].benefits!.length,
+                                itemBuilder: (context, index) =>
+                                    DiferencialsList(
+                                  icon: Icons.format_color_fill,
+                                  title: paintStore.paints[indexReference]
+                                      .benefits![index].name!,
                                 ),
                               ),
-                              Expanded(
-                                flex: 3,
-                                child: ListView.separated(
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  separatorBuilder: (context, index) =>
-                                      const SizedBox(height: 20),
-                                  itemCount: paintStore
-                                      .paints[indexReference].benefits!.length,
-                                  itemBuilder: (context, index) =>
-                                      DiferencialsList(
-                                          icon: Icons.format_color_fill,
-                                          title: paintStore
-                                              .paints[indexReference]
-                                              .benefits![index]
-                                              .name!),
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      )),
+                      ),
+                    ),
+                  ),
                   Expanded(
                     flex: 1,
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: RoundedButton(
                         backgroundColor: AppColors.backgroundSignInColor,
-                        onTapButton: () {},
+                        onTapButton: () {
+                          print(
+                              "Lista de diferenciais: ${paintStore.paints[indexReference].benefits![1].name!}");
+                          print("indexDiferenciais: $indexReference");
+                        },
                         child: const Text(
                           'Adicionar ao carrinho',
                           style: TextStyle(

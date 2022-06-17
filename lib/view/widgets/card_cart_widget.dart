@@ -32,10 +32,11 @@ class CardCart extends StatelessWidget {
       ),
       child: Row(
         children: [
-          SizedBox(
-            height: sizeScreen.height * 0.13,
-            width: 60,
-            child: Image.network(src),
+          Image.network(
+            src,
+            height: sizeScreen.height * 0.08,
+            width: sizeScreen.width * 0.15,
+            fit: BoxFit.fill,
           ),
           const SizedBox(width: 10),
           Column(
