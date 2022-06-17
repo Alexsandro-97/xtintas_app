@@ -7,6 +7,7 @@ class DioClient implements IClient {
 
   @override
   Future<Response> delete(String route, {dynamic data}) async {
+    dio.options.headers['Content-Type'] = 'application/json';
     final Response response =
         await dio.delete(UrlsAndRoutes.baseUrl + route, data: data);
     return response;
@@ -21,6 +22,7 @@ class DioClient implements IClient {
 
   @override
   Future<Response> post(String route, {dynamic data}) async {
+    dio.options.headers['Content-Type'] = 'application/json';
     final Response response =
         await dio.post(UrlsAndRoutes.baseUrl + route, data: data);
     return response;
@@ -28,6 +30,7 @@ class DioClient implements IClient {
 
   @override
   Future<Response> put(String route, {dynamic data}) async {
+    dio.options.headers['Content-Type'] = 'application/json';
     final Response response =
         await dio.put(UrlsAndRoutes.baseUrl + route, data: data);
     return response;
