@@ -23,6 +23,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final _key = GlobalKey<FormState>();
 
   bool isObscure = true;
+  bool isLoading = false;
 
   @override
   void dispose() {
@@ -126,20 +127,33 @@ class _SignInScreenState extends State<SignInScreen> {
                       const SizedBox(height: 25),
                       RoundedButton(
                         backgroundColor: const Color(0xFFFFFFFF),
-                        child: Text(
-                          'Login',
-                          style: TextStyle(
-                            color: AppColors.backgroundSignInColor,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 16,
-                          ),
-                        ),
+                        child: isLoading
+                            ? Center(
+                                child: CircularProgressIndicator(
+                                color: AppColors.backgroundSignInColor,
+                              ))
+                            : Text(
+                                'Login',
+                                style: TextStyle(
+                                  color: AppColors.backgroundSignInColor,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 16,
+                                ),
+                              ),
                         onTapButton: () async {
                           if (_key.currentState!.validate()) {
                             final hasSignIn = await userStore.signIn();
                             if (hasSignIn) {
-                              Navigator.of(context).pushNamedAndRemoveUntil(
-                                  '/homeScreen', (route) => false);
+                              setState(() {
+                                isLoading = true;
+                              });
+                              Future.delayed(const Duration(seconds: 2), () {
+                                setState(() {
+                                  isLoading = false;
+                                });
+                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                    '/homeScreen', (route) => false);
+                              });
                             } else {
                               _controllerPassword.clear();
                               ScaffoldMessenger.of(context).showSnackBar(
